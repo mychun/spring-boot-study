@@ -4,6 +4,7 @@ import com.chun.springbootstudy.domain.MyPojo;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -14,10 +15,10 @@ import java.util.List;
 @Component
 @ConfigurationProperties("chun")
 @Data
+@Profile("production") //指定在production环境下才生成
 public class MyChunProperties {
     private boolean enabled;
 
-    @NotNull
     private InetAddress remoteAddress;
 
     private final Security security = new Security();
