@@ -9,8 +9,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class SpringbootstudyApplication {
 
     public static void main(String[] args) {
+        //        final ConfigurableApplicationContext run = SpringApplication.run(SpringbootstudyApplication.class, args);
 
-        final ConfigurableApplicationContext run = SpringApplication.run(SpringbootstudyApplication.class, args);
+        final SpringApplication application = new SpringApplication();
+        application.setAdditionalProfiles("dev"); //这种方式，@Profile的效果还是失败
+        application.run(SpringbootstudyApplication.class, args);
 
         //查看容器里的所有组件
 //        String[] names = run.getBeanDefinitionNames();

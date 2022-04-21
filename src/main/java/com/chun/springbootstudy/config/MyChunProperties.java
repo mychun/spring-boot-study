@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 @ConfigurationProperties("chun")
 @Data
-@Profile("production") //指定在production环境下才生成
+@Profile("dev") //指定在dev环境下才生效
 public class MyChunProperties {
     private boolean enabled;
 
