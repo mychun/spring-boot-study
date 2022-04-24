@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.constroller;
 
+import com.chun.springbootstudy.config.GetMyApplicationPropertiesByValue;
 import com.chun.springbootstudy.config.MyChunProperties;
 import com.chun.springbootstudy.domain.MyPojo;
 import com.chun.springbootstudy.service.MyFirstServer;
@@ -18,6 +19,9 @@ public class MyFirstController {
 
     @Autowired
     private MyChunProperties properties;
+
+    @Autowired
+    private GetMyApplicationPropertiesByValue getMyApplicationPropertiesByValue;
 
     @GetMapping("/get")
     public String getInfo(){
@@ -38,5 +42,10 @@ public class MyFirstController {
             result = p.getName() + "---" + p.getDescription();
         }
         return result;
+    }
+
+    @GetMapping("/getMyApplicationPropertiesByValue")
+    public String getMyApplicationPropertiesByValue(){
+        return String.format("name: %s, age: %d, type: %s", getMyApplicationPropertiesByValue.getName(), getMyApplicationPropertiesByValue.getAge(), getMyApplicationPropertiesByValue.getType());
     }
 }
