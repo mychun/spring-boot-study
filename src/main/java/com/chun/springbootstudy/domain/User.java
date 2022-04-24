@@ -10,4 +10,16 @@ public class User {
         this.name = name;
         this.age = age;
     }
+
+    public User() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
