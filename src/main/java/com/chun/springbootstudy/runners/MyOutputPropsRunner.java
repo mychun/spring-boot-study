@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 //继承CommandLineRunner，在springboot启动时，自动运行，可以做一些启动时的任务
 @Component
-public class OutputPropsRunner implements CommandLineRunner {
-    private static final Logger LOGGER = LoggerFactory.getLogger(OutputPropsRunner.class);
+public class MyOutputPropsRunner implements CommandLineRunner {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyOutputPropsRunner.class);
 
     @Autowired
     private GetMyApplicationPropertiesByValue getMyApplicationPropertiesByValue;
