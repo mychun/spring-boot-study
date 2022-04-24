@@ -1,5 +1,7 @@
 package com.chun.springbootstudy.constroller;
 
+import com.chun.springbootstudy.exceptionhanlder.BusinessErrorException;
+import com.chun.springbootstudy.exceptionhanlder.BusinessMsgEnum;
 import com.chun.springbootstudy.resp.JsonResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,16 @@ public class ExceptionConstroller {
     @GetMapping("/exception")
     public JsonResponse exception(){
         LOG.info("长度: {}", 1 / 0);
+        return new JsonResponse();
+    }
+
+    @RequestMapping("/business")
+    public JsonResponse business() {
+        try {
+            int i = 1 / 0;
+        } catch (Exception e) {
+            throw new BusinessErrorException(BusinessMsgEnum.UNEXPECTED_EXCEPTION);
+        }
         return new JsonResponse();
     }
 }

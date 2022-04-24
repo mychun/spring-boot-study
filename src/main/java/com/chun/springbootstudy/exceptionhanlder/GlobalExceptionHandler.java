@@ -30,4 +30,13 @@ public class GlobalExceptionHandler {
         LOG.error("异常：{}", ex.getMessage());
         return new JsonResponse("500", "服务器异常");
     }
+
+    @ExceptionHandler(BusinessErrorException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public JsonResponse handleBusinessError(BusinessErrorException ex) {
+        String code = ex.getCode();
+        String message = ex.getMessage();
+        LOG.error("业务异常：{}", message);
+        return new JsonResponse(code, message);
+    }
 }
