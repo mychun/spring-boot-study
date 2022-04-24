@@ -23,4 +23,11 @@ public class GlobalExceptionHandler {
         LOG.error("空指针异常：{}", ex.getMessage());
         return new JsonResponse("500", "空指针异常");
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    private JsonResponse handlerException(Exception ex){
+        LOG.error("异常：{}", ex.getMessage());
+        return new JsonResponse("500", "服务器异常");
+    }
 }

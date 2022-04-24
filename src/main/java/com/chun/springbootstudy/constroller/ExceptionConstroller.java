@@ -18,4 +18,10 @@ public class ExceptionConstroller {
         LOG.info("长度: {}", str.length());
         return new JsonResponse();
     }
+
+    @GetMapping("/exception")
+    public JsonResponse exception(){
+        LOG.info("长度: {}", 1 / 0);
+        return new JsonResponse();
+    }
 }
