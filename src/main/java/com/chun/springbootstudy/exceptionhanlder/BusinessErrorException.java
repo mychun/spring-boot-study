@@ -9,7 +9,7 @@ public class BusinessErrorException extends RuntimeException {
     /*** 异常码 */
     private String code;
 
-    /*** 异常提示信息 */
+    /*** 异常提示信息1 */
     private String message;
 
     public BusinessErrorException(BusinessMsgEnum businessMsgEnum){
