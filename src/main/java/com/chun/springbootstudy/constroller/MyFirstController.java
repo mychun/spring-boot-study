@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.constroller;
 
+import com.chun.springbootstudy.annotations.UnInterception;
 import com.chun.springbootstudy.config.GetMyApplicationPropertiesByValue;
 import com.chun.springbootstudy.config.MyChunProperties;
 import com.chun.springbootstudy.domain.MyPojo;
@@ -25,6 +26,7 @@ public class MyFirstController {
     @Autowired
     private GetMyApplicationPropertiesByValue getMyApplicationPropertiesByValue;
 
+    @UnInterception //自定义的注解
     @GetMapping("/get")
     public String getInfo(){
         return myFirstServer.hello();

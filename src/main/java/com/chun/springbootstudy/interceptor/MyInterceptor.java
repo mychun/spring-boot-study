@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.interceptor;
 
+import com.chun.springbootstudy.annotations.UnInterception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -22,8 +23,13 @@ public class MyInterceptor implements HandlerInterceptor {
         Method method = handlerMethod.getMethod();
         String methodName = method.getName();
 
+        if(method.getAnnotation(UnInterception.class) != null){
+            logger.info("方法{}不被拦截", methodName);
+            return true;
+        }
+
         logger.info("方法{}被拦截", methodName);
-        return true;
+        return false;
     }
 
     @Override
