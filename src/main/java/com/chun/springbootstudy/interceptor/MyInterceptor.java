@@ -29,7 +29,7 @@ public class MyInterceptor implements HandlerInterceptor {
         }
 
         logger.info("方法{}被拦截", methodName);
-        return false;
+        return true;
     }
 
     @Override
