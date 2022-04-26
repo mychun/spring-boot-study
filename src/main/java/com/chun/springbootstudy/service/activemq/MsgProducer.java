@@ -12,6 +12,7 @@ public class MsgProducer {
     JmsMessagingTemplate jmsTemplate;
 
     public void sendMessage(Destination destination, String msg) {
+
         jmsTemplate.convertAndSend(destination,msg);
     }
 }
