@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chun.springbootstudy.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.chun.springbootstudy.domain.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="acount" jdbcType="VARCHAR" property="acount" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+    </resultMap>
+    <!--查询用户信息-->
+    <select id="getUserInfo" resultType="com.chun.springbootstudy.domain.User">
+        select * from user where id = #{id}
+    </select>
+    <!--删除用户信息-->
+    <delete id="deleteById" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+    <!--返回所有用户信息-->
+    <select id="selectAll"  resultType="com.chun.springbootstudy.domain.User">
+        select * from user
+    </select>
+
+    <!--增加用户信息-->
+    <insert id="save" parameterType="com.chun.springbootstudy.domain.User" >
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="acount != null" >
+                acount,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+
+            <if test="name != null" >
+                name,
+            </if>
+
+            <if test="age != null" >
+                age,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="acount != null" >
+                #{acount,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!--根据id更改用户信息-->
+    <update id="update" parameterType="com.chun.springbootstudy.domain.User">
+        update user
+        <set >
+            <if test="acount != null" >
+                acount = #{acount,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,6 +1,7 @@
 package com.chun.springbootstudy;
 
 import com.chun.springbootstudy.domain.Pet;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +12,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 @ImportResource(locations = "classpath:my-application.xml")
+@MapperScan("com.chun.springbootstudy.mapper")
 public class SpringbootstudyApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(SpringbootstudyApplication.class);
