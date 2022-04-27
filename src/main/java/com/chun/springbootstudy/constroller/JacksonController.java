@@ -1,7 +1,7 @@
 package com.chun.springbootstudy.constroller;
 
 import com.chun.springbootstudy.domain.MyPojo;
-import com.chun.springbootstudy.resp.JsonResponse;
+import com.chun.springbootstudy.resp.R;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,12 +13,12 @@ import java.util.Map;
 @RequestMapping("/jackson")
 public class JacksonController {
     @GetMapping("/get")
-    public JsonResponse<Map> testJson(){
+    public R testJson(){
         Map<Integer, MyPojo> myPojoMap = new HashMap<>();
         final MyPojo myPojo = new MyPojo();
         myPojo.setName("Mike");
 //        myPojo.setDescription("哈哈");
         myPojoMap.put(1, myPojo);
-        return new JsonResponse<Map>(myPojoMap);
+        return R.ok().data("itm", myPojoMap);
     }
 }

@@ -1,7 +1,7 @@
 package com.chun.springbootstudy.exceptionhanlder;
 
-import com.chun.springbootstudy.SpringbootstudyApplication;
-import com.chun.springbootstudy.resp.JsonResponse;
+import com.chun.springbootstudy.resp.R;
+import com.chun.springbootstudy.utils.ResultCodeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -19,24 +19,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NullPointerException.class)
     //指定响应的状态码
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public JsonResponse handlerNullPointException(NullPointerException ex){
+    public R handlerNullPointException(NullPointerException ex){
         LOG.error("空指针异常：{}", ex.getMessage());
-        return new JsonResponse("500", "空指针异常");
+        return R.setResult(ResultCodeEnum.NULL_POINT);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    private JsonResponse handlerException(Exception ex){
+    private R handlerException(Exception ex){
         LOG.error("异常：{}", ex.getMessage());
-        return new JsonResponse("500", "服务器异常");
+        return R.setResult(ResultCodeEnum.UNEXPECTED_EXCEPTION).message(ex.getMessage());
     }
 
     @ExceptionHandler(BusinessErrorException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public JsonResponse handleBusinessError(BusinessErrorException ex) {
-        String code = ex.getCode();
+    public R handleBusinessError(BusinessErrorException ex) {
+        Integer code = ex.getCode();
         String message = ex.getMessage();
         LOG.error("业务异常：{}", message);
-        return new JsonResponse(code, message);
+        return R.error().code(code).message(message);
     }
 }
