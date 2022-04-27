@@ -4,7 +4,7 @@
 
     <resultMap id="BaseResultMap" type="com.chun.springbootstudy.domain.User">
         <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="acount" jdbcType="VARCHAR" property="acount" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="name" jdbcType="VARCHAR" property="name" />
     </resultMap>
@@ -28,8 +28,8 @@
             <if test="id != null" >
                 id,
             </if>
-            <if test="acount != null" >
-                acount,
+            <if test="account != null" >
+                account,
             </if>
             <if test="password != null" >
                 password,
@@ -47,8 +47,8 @@
             <if test="id != null" >
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="acount != null" >
-                #{acount,jdbcType=VARCHAR},
+            <if test="account != null" >
+                #{account,jdbcType=VARCHAR},
             </if>
             <if test="password != null" >
                 #{password,jdbcType=VARCHAR},
@@ -66,8 +66,8 @@
     <update id="update" parameterType="com.chun.springbootstudy.domain.User">
         update user
         <set >
-            <if test="acount != null" >
-                acount = #{acount,jdbcType=VARCHAR},
+            <if test="account != null" >
+                account = #{account,jdbcType=VARCHAR},
             </if>
             <if test="password != null" >
                 password = #{password,jdbcType=VARCHAR},

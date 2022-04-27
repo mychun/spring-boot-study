@@ -7,7 +7,7 @@ public class User {
     private String name;
     private Integer age;
     private Integer id;
-    private String acount;
+    private String account;
     private String password;
 
     public User(String name, Integer age) {
@@ -25,7 +25,7 @@ public class User {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", id=" + id +
-                ", acount='" + acount + '\'' +
+                ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

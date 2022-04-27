@@ -27,8 +27,8 @@ public class UserController {
 
     //通过用户id删除用户
     //    http://localhost:8080/testBoot/delete?id=1(此处1为要删除的id）
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public JsonResponse delete(int id) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public JsonResponse delete(@PathVariable int id) {
         int result = userService.deleteById(id);
         if (result >= 1) {
             return new JsonResponse();

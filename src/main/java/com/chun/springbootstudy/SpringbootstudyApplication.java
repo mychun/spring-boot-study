@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -13,6 +14,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @SpringBootApplication
 @ImportResource(locations = "classpath:my-application.xml")
 @MapperScan("com.chun.springbootstudy.mapper")
+@EnableCaching
 public class SpringbootstudyApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(SpringbootstudyApplication.class);
