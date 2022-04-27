@@ -21,7 +21,7 @@ public class CaffeineConfig {
         List<CaffeineCache> caffeineCaches = new ArrayList<>();
 
         for (CacheType cacheType : CacheType.values()) {
-            //添加cache名称和设置消亡时间
+            //添加cache名称和 设置消亡时间
             caffeineCaches.add(new CaffeineCache(cacheType.name(),
                     Caffeine.newBuilder()
                             .expireAfterWrite(cacheType.getExpires(), TimeUnit.SECONDS)
