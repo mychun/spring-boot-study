@@ -2,11 +2,15 @@ package com.chun.springbootstudy.constroller;
 
 
 import com.chun.springbootstudy.domain.User;
+import com.chun.springbootstudy.req.UserQuery;
 import com.chun.springbootstudy.resp.R;
+import com.chun.springbootstudy.service.LuceneService;
 import com.chun.springbootstudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -14,6 +18,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LuceneService luceneService;
 
     //通过用户id获取用户所有信息
     //    http://localhost:8080/testBoot/getUser/1(此处1为要获取的id）
@@ -39,9 +46,11 @@ public class UserController {
     //根据用户id更新用户信息
     //http://localhost:8080/testBoot/update?id=2&userName=波波&passWord=123456&realName=lalala
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public R update(@RequestBody User user) {
+    public R update(@RequestBody User user) throws IOException {
         int result = userService.Update(user);
         if (result >= 1) {
+            //更新lucene索引
+            luceneService.updateUerIndex(userService.getUserInfo(user.getId()));
             return R.ok();
         } else {
             return R.error();
@@ -50,11 +59,15 @@ public class UserController {
     //插入新用户
     //    http://localhost:8080/testBoot/insert?id=100&userName=波波&passWord=123456&realName=lalala
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public R insert(@RequestBody User user) {
+    public R insert(@RequestBody User user) throws IOException {
         final User u = userService.save(user);
         if(u != null){
+            List<User> list = new ArrayList<>(){};
+            list.add(user);
+            //创建lucene索引
+            luceneService.createUserIndex(list);
             return R.ok();
-        } else{
+        } else {
             return R.error();
         }
     }
@@ -62,8 +75,17 @@ public class UserController {
     //    http://localhost:8080/testBoot/selectAll
     @RequestMapping("/selectAll")
     @ResponseBody
-    public R ListUser() {
+    public R ListUser() throws IOException {
         final List<User> users = userService.selectAll();
+        luceneService.createUserIndex(users);
         return R.ok().data("itms", users);
+    }
+
+    @RequestMapping(value = "/findUserBylucene", method = RequestMethod.POST)
+    public R findUserBylucene(@RequestBody User user) throws Exception {
+        UserQuery userQuery = new UserQuery();
+        userQuery.setParams(user);
+        UserQuery result  = luceneService.searchUser(userQuery);
+        return R.ok().data("itms", result.getResults());
     }
 }
