@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     private R handlerException(Exception ex){
         LOG.error("异常：{}", ex.getMessage());
-        return R.setResult(ResultCodeEnum.UNEXPECTED_EXCEPTION).message(ex.getMessage());
+        return R.setResult(ResultCodeEnum.UNEXPECTED_EXCEPTION);
     }
 
     @ExceptionHandler(BusinessErrorException.class)
