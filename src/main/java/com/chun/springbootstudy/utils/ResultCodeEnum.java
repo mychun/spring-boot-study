@@ -10,6 +10,7 @@ public enum ResultCodeEnum {
     PARAM_ERROR(false,20002,"参数错误"),
     NULL_POINT(false,20003, "空指针异常"),
     SERVICE_TIME_OUT(false,200005, "服务调用超时！"),
+    ILLEGAL_ARGUMENT(false,200006, "非法参数！"),
     //业务的
     PARMETER_BIG_EXCEPTION(false,10002, "输入的图片张数不能超过50张"),
     UNEXPECTED_EXCEPTION(false,100003, "系统发生异常，请联系管理员"),

@@ -7,6 +7,7 @@ import com.chun.springbootstudy.resp.R;
 import com.chun.springbootstudy.service.LuceneService;
 import com.chun.springbootstudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -29,6 +30,13 @@ public class UserController {
     //    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public R GetUser(@PathVariable int id) {
         final User userInfo = userService.getUserInfo(id);
+
+//        if (userInfo == null) {
+//            throw new IllegalArgumentException("用户不存在");
+//        }
+        //Assert 解决 参数和业务数据之间校验
+        Assert.notNull(userInfo, "用户不存在");
+
         return R.ok().data("user", userInfo);
     }
 

@@ -39,4 +39,11 @@ public class GlobalExceptionHandler {
         LOG.error("业务异常：{}", message);
         return R.error().code(code).message(message);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public R handleIllegalAccessException(IllegalArgumentException ex) {
+        String message = ex.getMessage();
+        return R.error().code(ResultCodeEnum.ILLEGAL_ARGUMENT.getCode()).message(message);
+    }
 }
