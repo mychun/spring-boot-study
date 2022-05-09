@@ -36,6 +36,24 @@ public class UserController {
 //        }
         //Assert 解决 参数和业务数据之间校验
         Assert.notNull(userInfo, "用户不存在");
+//        Assert.isInstanceOf(UserService.class, userInfo, "不是该对象的继承者");
+//        Assert.isAssignable(UserService.class, User.class, "不是可转换的类型");
+
+//        String str = null;
+//        Assert.hasLength(str, "至少包含一个字符");
+
+//        String str = "";
+//        String str = " ";
+//        String str = "a ";
+//        Assert.hasText(str, "至少包含一个非空白字符");
+
+//        String str = "我是中国人";
+//        Assert.doesNotContain(str, "中国人", "不能包含该字符串");
+
+//        Assert.isTrue(false, "条件为假抛出异常");
+
+//        String[] strArr= {"1", null, "2"};
+//        Assert.noNullElements(strArr, "不能包含null成员");
 
         return R.ok().data("user", userInfo);
     }
