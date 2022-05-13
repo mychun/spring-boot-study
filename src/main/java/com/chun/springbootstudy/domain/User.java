@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.domain;
 
+import com.chun.springbootstudy.customvalidator.EnumString;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -20,6 +21,9 @@ public class User {
     @Email(message = "请填写正确的邮箱地址")
     private String email;
 
+    @EnumString(value = {"男", "女"}, message = "性别只允许为男或女")
+    private String sex;
+
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;
@@ -38,6 +42,7 @@ public class User {
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", sex='" + sex + '\'' +
                 '}';
     }
 }
