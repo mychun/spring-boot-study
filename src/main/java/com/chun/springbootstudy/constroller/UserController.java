@@ -25,7 +25,7 @@ public class UserController {
 
     //通过用户id获取用户所有信息
     //    http://localhost:8080/testBoot/getUser/1(此处1为要获取的id）
-    @RequestMapping(value = "getUser/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
     //    http://localhost:8080/testBoot/getUser?id=1(此处1为要获取的id）
     //    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public R GetUser(@PathVariable int id) {

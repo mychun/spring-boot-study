@@ -11,9 +11,9 @@ public enum ResultCodeEnum {
     NULL_POINT(false,20003, "空指针异常"),
     SERVICE_TIME_OUT(false,200005, "服务调用超时！"),
     ILLEGAL_ARGUMENT(false,200006, "非法参数！"),
+    UNEXPECTED_EXCEPTION(false,200007, "系统发生异常，请联系管理员"),
     //业务的
     PARMETER_BIG_EXCEPTION(false,10002, "输入的图片张数不能超过50张"),
-    UNEXPECTED_EXCEPTION(false,100003, "系统发生异常，请联系管理员"),
     ;
 
     // 响应是否成功

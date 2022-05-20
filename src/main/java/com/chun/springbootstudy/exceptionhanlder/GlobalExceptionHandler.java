@@ -23,38 +23,27 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
     private static final Logger LOG = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    //指定的异常类型，出现时使用改方法处理
-    @ExceptionHandler(NullPointerException.class)
-    //指定响应的状态码
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public R handlerNullPointException(NullPointerException ex){
-        LOG.error("空指针异常：{}", ex.getMessage());
-        return R.setResult(ResultCodeEnum.NULL_POINT);
-    }
-
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     private R handlerException(Exception ex){
-        LOG.error("异常：{}", ex.getMessage());
+        LOG.error("系统内部异常：{}", ex.getMessage());
         return R.setResult(ResultCodeEnum.UNEXPECTED_EXCEPTION);
     }
 
-    @ExceptionHandler(BusinessErrorException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public R handleIllegalAccessException(IllegalArgumentException ex) {
+        LOG.error("非法参数异常：{}", ex.getMessage());
+        return R.setResult(ResultCodeEnum.ILLEGAL_ARGUMENT);
+    }
+
+    @ExceptionHandler(BusinessErrorException.class)
     public R handleBusinessError(BusinessErrorException ex) {
         Integer code = ex.getCode();
         String message = ex.getMessage();
         LOG.error("业务异常：{}", message);
         return R.error().code(code).message(message);
     }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public R handleIllegalAccessException(IllegalArgumentException ex) {
-        String message = ex.getMessage();
-        return R.error().code(ResultCodeEnum.ILLEGAL_ARGUMENT.getCode()).message(message);
-    }
-
 
     /**
      * validato异常处理
