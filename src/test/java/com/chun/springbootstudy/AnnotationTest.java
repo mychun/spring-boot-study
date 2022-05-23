@@ -1,7 +1,7 @@
 package com.chun.springbootstudy;
 
 import com.chun.springbootstudy.annotations.MyAnnotaion;
-import com.chun.springbootstudy.constroller.TestCustomAnnotaionController;
+import com.chun.springbootstudy.controller.TestCustomAnnotaionController;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
