@@ -104,7 +104,7 @@ public class UserController {
     public R ListUser() throws IOException {
         final List<User> users = userService.selectAll();
         luceneService.createUserIndex(users);
-        return R.ok().data("itms", users);
+        return R.ok().list(users);
     }
 
     @RequestMapping(value = "/findUserBylucene", method = RequestMethod.POST)

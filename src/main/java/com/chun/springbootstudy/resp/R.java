@@ -4,6 +4,7 @@ import com.chun.springbootstudy.utils.ResultCodeEnum;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -57,6 +58,12 @@ public class R {
     // 通用设置data
     public R data(String key,Object value) {
         this.data.put(key, value);
+        return this;
+    }
+
+    // 通用设置data，形参为：List<Object>
+    public R list(List<Object> value) {
+        this.data.put("items", value);
         return this;
     }
 
