@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.controller;
 
+import com.chun.springbootstudy.annotations.MyLog;
 import com.chun.springbootstudy.domain.MyPojo;
 import com.chun.springbootstudy.resp.R;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/jackson")
 public class JacksonController {
+
+    @MyLog
     @GetMapping("/get")
     public R testJson(){
         Map<Integer, MyPojo> myPojoMap = new HashMap<>();

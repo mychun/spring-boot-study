@@ -13,7 +13,8 @@ import org.aspectj.lang.annotation.Pointcut;
 @Component
 @Slf4j
 public class LogAop {
-    @Pointcut("execution(public * com.chun.*.controller.*.*(..))")
+    // @Pointcut("execution(public * com.chun.*.controller.*.*(..))")
+    @Pointcut("@annotation(com.chun.springbootstudy.annotations.MyLog)")
     public void logger(){}
 
     @Around("logger()")
