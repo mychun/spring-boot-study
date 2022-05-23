@@ -1,9 +1,7 @@
-package com.chun.springbootstudy.constroller;
+package com.chun.springbootstudy.controller;
 
 import com.chun.springbootstudy.annotations.UnInterception;
 import com.chun.springbootstudy.config.GetMyApplicationPropertiesByValue;
-import com.chun.springbootstudy.config.MyChunProperties;
-import com.chun.springbootstudy.domain.MyPojo;
 import com.chun.springbootstudy.service.MyFirstServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/hello")

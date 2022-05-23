@@ -1,7 +1,6 @@
-package com.chun.springbootstudy.constroller;
+package com.chun.springbootstudy.controller;
 
 import com.chun.springbootstudy.domain.User;
-import javax.validation.constraints.Email;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

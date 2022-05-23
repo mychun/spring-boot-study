@@ -1,4 +1,4 @@
-package com.chun.springbootstudy.constroller;
+package com.chun.springbootstudy.controller;
 
 import com.chun.springbootstudy.domain.MyPojo;
 import com.chun.springbootstudy.resp.R;

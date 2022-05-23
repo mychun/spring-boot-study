@@ -1,4 +1,4 @@
-package com.chun.springbootstudy.constroller;
+package com.chun.springbootstudy.controller;
 
 import com.chun.springbootstudy.domain.Diana;
 import org.springframework.beans.factory.annotation.Autowired;
