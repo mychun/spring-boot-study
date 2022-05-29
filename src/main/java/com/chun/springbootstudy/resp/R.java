@@ -1,5 +1,6 @@
 package com.chun.springbootstudy.resp;
 
+import com.chun.springbootstudy.domain.User;
 import com.chun.springbootstudy.utils.ResultCodeEnum;
 import lombok.Data;
 
@@ -62,8 +63,8 @@ public class R {
     }
 
     // 通用设置data，形参为：List<Object>
-    public R list(List<Object> value) {
-        this.data.put("items", value);
+    public R list(List<?> list) {
+        this.data.put("items", list);
         return this;
     }
 
